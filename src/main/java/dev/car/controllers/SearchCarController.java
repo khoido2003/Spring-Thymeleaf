@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import dev.car.dao.CarDAO;
 import dev.car.dtos.CarDetailDTO;
-import dev.car.models.Car;
 import jakarta.servlet.http.HttpSession;
 
 @Controller
@@ -30,6 +29,7 @@ public class SearchCarController {
 
     List<CarDetailDTO> listCar = carDAO.searchCar(carName);
     model.addAttribute("carList", listCar);
+    session.setAttribute("carList", listCar);
 
     return "searchCar";
   }

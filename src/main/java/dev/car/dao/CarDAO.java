@@ -55,4 +55,42 @@ public class CarDAO implements dev.car.interfaces.CarDAO {
     return jdbcTemplate.query(sql, CAR_ROW_MAPPER, "%" + modelName + "%");
   }
 
+  public int updateCar(CarDetailDTO carDetail) {
+    try {
+      String sql = "UPDATE tblCar c " +
+          "JOIN tblCarModel cm ON c.tblCarModelid = cm.id " +
+          "JOIN tblManufacturer m ON cm.tblManufacturerid = m.id " +
+          "SET c.dailyRate = ?, c.status = ?, c.rentalPricePerDay = ?, " +
+          "c.maxHourRent = ?, c.license = ?, cm.modelName = ?, cm.year = ?, " +
+          "cm.fuelType = ?, cm.color = ?, cm.seatNum = ?, cm.gearBoxType = ?, " +
+          "m.name = ?, m.email = ?, m.phone = ?, m.address = ? " +
+          "WHERE c.id = ?";
+
+      int result = jdbcTemplate.update(sql,
+          carDetail.getDailyRate(),
+          carDetail.getStatus(),
+          carDetail.getRentalPricePerDay(),
+          carDetail.getMaxHourRent(),
+          carDetail.getLicense(),
+          carDetail.getModelName(),
+          carDetail.getYear(),
+          carDetail.getFuelType(),
+          carDetail.getColor(),
+          carDetail.getSeatNum(),
+          carDetail.getGearBoxType(),
+          carDetail.getManufacturerName(),
+          carDetail.getManufacturerEmail(),
+          carDetail.getManufacturerPhone(),
+          carDetail.getManufacturerAddress(),
+          carDetail.getId());
+
+      System.out.println(result);
+
+      return result;
+    } catch (Exception e) {
+      e.printStackTrace();
+      return 0;
+    }
+  }
+
 }

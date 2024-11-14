@@ -138,6 +138,10 @@
                     <td th:text="${car.rentalPricePerDay}"></td>
                     <td th:text="${car.fuelType}"></td>
                     <td th:text="${car.gearBoxType}"></td>
+                    <td>
+                      <a th:href="@{/editCar(id=${car.id})}" class="btn btn-primary">Edit</a>
+
+                  </td>
                 </tr>
             </tbody>
         </table>

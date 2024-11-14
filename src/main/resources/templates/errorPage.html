@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Error Page</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f8d7da;
+        color: #721c24;
+        padding: 20px;
+      }
+      .container {
+        background-color: #f8d7da;
+        border: 1px solid #f5c6cb;
+        padding: 20px;
+        border-radius: 5px;
+      }
+      .error-title {
+        font-size: 24px;
+        font-weight: bold;
+      }
+      .error-message {
+        margin-top: 10px;
+        font-size: 18px;
+      }
+      .back-home {
+        margin-top: 20px;
+        padding: 10px 20px;
+        background-color: #007bff;
+        color: white;
+        text-decoration: none;
+        border-radius: 5px;
+      }
+      .back-home:hover {
+        background-color: #0056b3;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="error-title">
+        <h1>Error!</h1>
+      </div>
+      <!-- <div class="error-message" th:text="${error}">
+        Error message goes here
+      </div> -->
+      <a href="/home" class="back-home">Back to Home</a>
+    </div>
+  </body>
+</html>
