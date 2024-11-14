@@ -1,6 +1,131 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <title>Home - Car Rental Shop</title>
+    <style>
+      /* Basic reset */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: Arial, sans-serif;
+      }
+
+      /* Page background */
+      body {
+        background-color: #f5f5f5;
+      }
+
+      /* Main container */
+      .container {
+        max-width: 800px;
+        margin: 50px auto;
+        padding: 20px;
+        background-color: #fff;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      }
+
+      /* Header styles */
+      .header {
+        text-align: center;
+        margin-bottom: 30px;
+      }
+
+      .header h1 {
+        color: #4caf50;
+      }
+
+      .header p {
+        font-size: 18px;
+        color: #666;
+      }
+
+      /* Employee details */
+      .employee-info {
+        margin: 20px 0;
+        padding: 15px;
+        border: 1px solid #4caf50;
+        border-radius: 8px;
+        background-color: #eaffea;
+        text-align: center;
+      }
+
+      .employee-info h2 {
+        color: #4caf50;
+        font-size: 24px;
+      }
+
+      .employee-info p {
+        color: #333;
+        font-size: 18px;
+      }
+
+      .signout {
+        background-color: #cf4a47;
+        text-decoration: none;
+        color: #fff;
+        display: inline-block;
+        margin-top: 20px;
+        padding: 10px 20px;
+        text-decoration: none;
+        font-size: 16px;
+        border-radius: 5px;
+        transition: background-color 0.3s ease;
+      }
+
+      /* CTA button */
+      .cta-button {
+        display: inline-block;
+        margin-top: 20px;
+        padding: 10px 20px;
+        background-color: #4caf50;
+        color: #fff;
+        text-decoration: none;
+        font-size: 16px;
+        border-radius: 5px;
+        transition: background-color 0.3s ease;
+      }
+
+      .cta-button:hover {
+        background-color: #4caf50;
+      }
+
+      /* Footer */
+      .footer {
+        text-align: center;
+        margin-top: 30px;
+        font-size: 14px;
+        color: #888;
+      }
+    </style>
+  </head>
   <body>
-    <p>Home page</p>
+    <div class="container">
+      <!-- Header section -->
+      <div class="header">
+        <h1>Chào mừng quay trở lai!</h1>
+        <p>Chọn một chức năng bên dưới để thực hiện</p>
+      </div>
+
+      <div>
+        <a class="signout" href="/signout">Đăng xuất</a>
+      </div>
+
+      <!-- Employee Information -->
+      <div class="employee-info">
+        <h2 th:text="'Hello, ' + ${employee.name} + '!'">Hello, Employee!</h2>
+        <p th:text="'Role: ' + ${employee.role}">Role: Employee Role</p>
+      </div>
+
+      <!-- Call-to-Action Button -->
+      <a href="/manageCar" class="cta-button">Quản lý xe</a>
+      <a href="/viewStats" class="cta-button">Xem thống kê</a>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+      <p>&copy; 2024 Car Rental Shop. All rights reserved.</p>
+    </div>
   </body>
 </html>

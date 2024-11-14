@@ -28,6 +28,7 @@ public class EmployeeDAO implements dev.car.interfaces.EmployeeDAO {
     public Employee mapRow(ResultSet rs, int rowNum) {
       try {
         Employee employee = new Employee();
+        employee.setName(rs.getString("name"));
         employee.setId(rs.getInt("id"));
         employee.setEmail(rs.getString("email"));
         employee.setPassword(rs.getString("password"));
@@ -47,10 +48,10 @@ public class EmployeeDAO implements dev.car.interfaces.EmployeeDAO {
 
   @Override
   public Employee checkLogin(String email, String password) {
-    String sql = "SELECT * FROM employee WHERE email = ? AND password = ?";
-
+    String sql = "SELECT * FROM tblemployee WHERE email = ? AND password = ?";
     try {
       List<Employee> employees = jdbcTemplate.query(sql, employeeRowMapper, new Object[] { email, password });
+
       return employees.isEmpty() ? null : employees.get(0);
     } catch (Exception err) {
       err.printStackTrace();
@@ -63,7 +64,7 @@ public class EmployeeDAO implements dev.car.interfaces.EmployeeDAO {
     if (existsByEmail(employee.getEmail())) {
       return false; // Email already exists
     }
-    String sql = "INSERT INTO employee (email, password, role, dob, phoneNum, address) VALUES (?, ?, ?, ?, ?, ?)";
+    String sql = "INSERT INTO tblemployee (email, password, role, dob, phoneNum, address) VALUES (?, ?, ?, ?, ?, ?)";
     return jdbcTemplate.update(
         sql,
         employee.getEmail(),
@@ -77,7 +78,7 @@ public class EmployeeDAO implements dev.car.interfaces.EmployeeDAO {
   @SuppressWarnings("deprecation")
   @Override
   public boolean existsByEmail(String email) {
-    String sql = "SELECT * FROM employee WHERE email = ? AND password = ?";
+    String sql = "SELECT * FROM tblemployee WHERE email = ? AND password = ?";
 
     List<Integer> counts = jdbcTemplate.query(sql, new Object[] { email }, (rs, rowNum) -> rs.getInt(1));
 
