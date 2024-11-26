@@ -1,6 +1,7 @@
 package dev.car.controllers;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -23,6 +24,7 @@ public class EditCarController {
   public String showEditCar(@RequestParam("id") int carId, Model model, HttpSession session) {
 
     // Retrieve the list of cars from the session
+    @SuppressWarnings("unchecked")
     List<CarDetailDTO> listCar = (List<CarDetailDTO>) session.getAttribute("carList");
 
     // Check if the list is null
@@ -75,20 +77,36 @@ public class EditCarController {
     updatedCar.setStatus(status);
     updatedCar.setMaxHourRent(maxHourRent);
     updatedCar.setLicense(license);
+    updatedCar.setRentalPricePerDay(rentalPricePerDay);
+    updatedCar.setDailyRate(dailyRate);
 
     System.out.println(updatedCar.toString());
     // Update the car in the database
     int updateSuccess = carDAO.updateCar(updatedCar);
 
-    if (updateSuccess == 3) {
-      // If the update was successful, redirect to a success page or show the updated
-      // car list
-      model.addAttribute("success", "Car details updated successfully.");
-      return "redirect:/editCar";
+    if (updateSuccess > 0) {
+      // Retrieve the current car list from the session
+      @SuppressWarnings("unchecked")
+      List<CarDetailDTO> carList = (List<CarDetailDTO>) session.getAttribute("carList");
+
+      if (carList != null) {
+        // Update the car in the session list
+        carList = carList.stream()
+            .map(car -> car.getId() == carId ? updatedCar : car)
+            .collect(Collectors.toList());
+
+        // Set the updated list back into the session
+        session.setAttribute("carList", carList);
+
+        return "redirect:/editCar?id=" + carId + "&success=true";
+
+      } else {
+
+        return "redirect:/editCar?id=" + carId;
+      }
     } else {
-      // If update failed, show an error
-      model.addAttribute("error", "Failed to update car details.");
-      return "errorPage";
+
+      return "redirect:/editCar?id=" + carId;
     }
   }
 }

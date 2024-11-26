@@ -9,9 +9,9 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor // Generates a constructor with all arguments
 public class CarDetailDTO {
   private int id;
-  private int dailyRate;
+  private double dailyRate;
   private String status;
-  private float rentalPricePerDay;
+  private double rentalPricePerDay;
   private float maxHourRent;
   private String license;
   private String modelName;

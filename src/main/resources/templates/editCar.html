@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Edit Car Details</title>
+    <title>Sửa thông tin xe</title>
     <!-- Bootstrap CDN for styling -->
     <link
       href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
@@ -90,7 +90,7 @@
   <body>
     <div class="container">
       <div class="card">
-        <h2>Edit Car Details</h2>
+        <h2>Sửa thông tin xe</h2>
 
         <!-- Edit Form -->
         <form action="/editCar" method="post">
@@ -98,7 +98,7 @@
 
           <!-- Model Name -->
           <div class="form-group">
-            <label for="modelName">Model Name</label>
+            <label for="modelName">Tên xe</label>
             <input
               type="text"
               class="form-control"
@@ -111,7 +111,7 @@
 
           <!-- Manufacturer Name -->
           <div class="form-group">
-            <label for="manufacturerName">Manufacturer Name</label>
+            <label for="manufacturerName">Nhà sản xuất</label>
             <input
               type="text"
               class="form-control"
@@ -124,7 +124,7 @@
 
           <!-- Manufacturer Email -->
           <div class="form-group">
-            <label for="manufacturerEmail">Manufacturer Email</label>
+            <label for="manufacturerEmail">Email NSX</label>
             <input
               type="email"
               class="form-control"
@@ -137,7 +137,7 @@
 
           <!-- Manufacturer Phone -->
           <div class="form-group">
-            <label for="manufacturerPhone">Manufacturer Phone</label>
+            <label for="manufacturerPhone">Số điện thoại NSX</label>
             <input
               type="text"
               class="form-control"
@@ -150,7 +150,7 @@
 
           <!-- Manufacturer Address -->
           <div class="form-group">
-            <label for="manufacturerAddress">Manufacturer Address</label>
+            <label for="manufacturerAddress">Địa chỉ NSX</label>
             <input
               type="text"
               class="form-control"
@@ -163,7 +163,7 @@
 
           <!-- Year -->
           <div class="form-group">
-            <label for="year">Year</label>
+            <label for="year">Năm sản xuất</label>
             <input
               type="text"
               class="form-control"
@@ -176,7 +176,7 @@
 
           <!-- Fuel Type -->
           <div class="form-group">
-            <label for="fuelType">Fuel Type</label>
+            <label for="fuelType">Loại nhiên liệu</label>
             <input
               type="text"
               class="form-control"
@@ -189,7 +189,7 @@
 
           <!-- Color -->
           <div class="form-group">
-            <label for="color">Color</label>
+            <label for="color">Màu xe</label>
             <input
               type="text"
               class="form-control"
@@ -202,7 +202,7 @@
 
           <!-- Seat Number -->
           <div class="form-group">
-            <label for="seatNum">Seat Number</label>
+            <label for="seatNum">Số chỗ</label>
             <input
               type="number"
               class="form-control"
@@ -215,7 +215,7 @@
 
           <!-- Gear Box Type -->
           <div class="form-group">
-            <label for="gearBoxType">Gear Box Type</label>
+            <label for="gearBoxType">Loại hộp số</label>
             <input
               type="text"
               class="form-control"
@@ -228,7 +228,7 @@
 
           <!-- Daily Rate -->
           <div class="form-group">
-            <label for="dailyRate">Daily Rate</label>
+            <label for="dailyRate">Quãng đường đã đi</label>
             <input
               type="number"
               class="form-control"
@@ -241,7 +241,7 @@
 
           <!-- Status -->
           <div class="form-group">
-            <label for="status">Status</label>
+            <label for="status">Trạng thái</label>
             <input
               type="text"
               class="form-control"
@@ -254,7 +254,7 @@
 
           <!-- Rental Price Per Day -->
           <div class="form-group">
-            <label for="rentalPricePerDay">Rental Price Per Day</label>
+            <label for="rentalPricePerDay">Giá thuê</label>
             <input
               type="number"
               step="0.01"
@@ -268,7 +268,7 @@
 
           <!-- Max Hour Rent -->
           <div class="form-group">
-            <label for="maxHourRent">Max Hour Rent</label>
+            <label for="maxHourRent">Giờ thuê tối đa</label>
             <input
               type="number"
               class="form-control"
@@ -281,7 +281,7 @@
 
           <!-- License -->
           <div class="form-group">
-            <label for="license">License</label>
+            <label for="license">Biển số xe</label>
             <input
               type="text"
               class="form-control"
@@ -293,10 +293,23 @@
           </div>
 
           <!-- Submit Button -->
-          <button type="submit" class="btn btn-primary">Save Changes</button>
+          <button type="submit" class="btn btn-primary">Lưu thông tin</button>
         </form>
       </div>
     </div>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const urlParams = new URLSearchParams(window.location.search);
+        const success = urlParams.get("success");
+
+        if (success === "true") {
+          alert("Cập nhật thông tin xe thành công");
+        } else if (success === "false") {
+          alert("Không cập nhật thành công");
+        }
+      });
+    </script>
 
     <!-- Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
