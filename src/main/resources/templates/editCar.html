@@ -98,7 +98,7 @@
 
           <!-- Model Name -->
           <div class="form-group">
-            <label for="modelName">Tên xe</label>
+            <label for="modelName">Dòng xe</label>
             <input
               type="text"
               class="form-control"
@@ -295,6 +295,8 @@
           <!-- Submit Button -->
           <button type="submit" class="btn btn-primary">Lưu thông tin</button>
         </form>
+
+        <a href="/searchCar">Quay lại</a>
       </div>
     </div>
 
@@ -306,7 +308,7 @@
         if (success === "true") {
           alert("Cập nhật thông tin xe thành công");
         } else if (success === "false") {
-          alert("Không cập nhật thành công");
+          alert("Không cập nhật thành công, trường dữ liệu đã tồn tại!");
         }
       });
     </script>

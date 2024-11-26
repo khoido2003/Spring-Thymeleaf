@@ -29,7 +29,6 @@ public class EditCarController {
 
     // Check if the list is null
     if (listCar == null) {
-
       model.addAttribute("error", "No cars available.");
       return "errorPage";
     }
@@ -50,16 +49,25 @@ public class EditCarController {
   }
 
   @PostMapping("/editCar")
-  public String updateCar(@RequestParam("id") int carId, @RequestParam("modelName") String modelName,
+  public String updateCar(
+      @RequestParam("id") int carId,
+      @RequestParam("modelName") String modelName,
       @RequestParam("manufacturerName") String manufacturerName,
       @RequestParam("manufacturerEmail") String manufacturerEmail,
       @RequestParam("manufacturerPhone") String manufacturerPhone,
       @RequestParam("manufacturerAddress") String manufacturerAddress,
-      @RequestParam("year") String year, @RequestParam("fuelType") String fuelType, @RequestParam("color") String color,
-      @RequestParam("seatNum") int seatNum, @RequestParam("gearBoxType") String gearBoxType,
-      @RequestParam("dailyRate") double dailyRate, @RequestParam("status") String status,
-      @RequestParam("rentalPricePerDay") double rentalPricePerDay, @RequestParam("maxHourRent") float maxHourRent,
-      @RequestParam("license") String license, HttpSession session, Model model) {
+      @RequestParam("year") String year,
+      @RequestParam("fuelType") String fuelType,
+      @RequestParam("color") String color,
+      @RequestParam("seatNum") int seatNum,
+      @RequestParam("gearBoxType") String gearBoxType,
+      @RequestParam("dailyRate") double dailyRate,
+      @RequestParam("status") String status,
+      @RequestParam("rentalPricePerDay") double rentalPricePerDay,
+      @RequestParam("maxHourRent") float maxHourRent,
+      @RequestParam("license") String license,
+      HttpSession session,
+      Model model) {
 
     // Create the updated car object with the form data
     CarDetailDTO updatedCar = new CarDetailDTO();
@@ -102,11 +110,11 @@ public class EditCarController {
 
       } else {
 
-        return "redirect:/editCar?id=" + carId;
+        return "redirect:/editCar?id=" + carId + "&success=false";
       }
     } else {
 
-      return "redirect:/editCar?id=" + carId;
+      return "redirect:/editCar?id=" + carId + "&success=false";
     }
   }
 }

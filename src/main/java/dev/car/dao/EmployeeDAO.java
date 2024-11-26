@@ -25,7 +25,7 @@ public class EmployeeDAO implements dev.car.interfaces.EmployeeDAO {
   private RowMapper<Employee> employeeRowMapper = new RowMapper<Employee>() {
 
     @Override
-    public Employee mapRow(ResultSet rs, int rowNum) {
+    public Employee mapRow(@SuppressWarnings("null") ResultSet rs, int rowNum) {
       try {
         Employee employee = new Employee();
         employee.setName(rs.getString("name"));

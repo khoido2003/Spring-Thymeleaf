@@ -123,6 +123,7 @@
                     <th>Giá thuê</th>
                     <th>Loại nhiên liệu</th>
                     <th>Loại hộp số</th>
+                    <th>Biển số xe</th>
                 </tr>
             </thead>
             <tbody>
@@ -138,6 +139,7 @@
                     <td th:text="${car.rentalPricePerDay}"></td>
                     <td th:text="${car.fuelType}"></td>
                     <td th:text="${car.gearBoxType}"></td>
+                    <td th:text="${car.license}"></td>
                     <td>
                       <a th:href="@{/editCar(id=${car.id})}" class="btn btn-primary">Sửa</a>
 
@@ -145,6 +147,7 @@
                 </tr>
             </tbody>
         </table>
+        <a href="/manageCar">Quay lại</a>
     </div>
     
 

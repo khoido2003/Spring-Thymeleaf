@@ -25,7 +25,11 @@ public class LoginController {
   }
 
   @PostMapping("/signin")
-  public String signIn(@RequestParam String email, @RequestParam String password, Model model, HttpSession session) {
+  public String signIn(
+      @RequestParam String email,
+      @RequestParam String password,
+      Model model,
+      HttpSession session) {
 
     if (session.getAttribute("employee") != null) {
       // Redirect to home if already logged in
@@ -40,7 +44,7 @@ public class LoginController {
 
       return "redirect:/home";
     } else {
-      model.addAttribute("error", "Invalid email or password");
+      model.addAttribute("error", "Sai email hoặc password");
       return "signin";
     }
   }
